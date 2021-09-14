@@ -1,0 +1,26 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = pd.read_csv('10590451038196_1.csv')
+df.head()
+
+#Now we shift the graph so that the lowest point
+#is our starting position
+df['tdata'] = abs(df['tdata']-0.75)%1
+
+#creating our first scatterplot
+plt.figure (figsize = (10,10))
+
+#We will rewrite tdata as phase and plot that as our x
+#The y axis will be the magnitude column
+sns.scatterplot (x= 'tdata', y ='mag', data = df)
+scatterplot = sns.scatterplot (x= 'tdata', y ='mag', data = df)
+
+#making the plot a bit more descriptive
+plt.title('magitude vs. phase of star #1')
+plt.xlabel('phase')
+plt.ylabel('magnitude')
+yxis = plt.ylabel('magnitude')
+scatterplot.invert_yaxis()
+plt.show()
